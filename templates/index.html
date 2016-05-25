@@ -160,8 +160,9 @@
         <select name="departamento" class="form-control">
           <option value="">Departamento</option>
           <option value="">Departamento</option>
-          <option value="">Departamento</option>
-          <option value="">Departamento</option>
+          {#foreach from=$regiones item=depto#}
+          <option value="{#$depto->idDepto#}">{#$depto->nombre#}</option>
+          {#/foreach#}
         </select>
       </div>
       <!--/-Departamento-->
