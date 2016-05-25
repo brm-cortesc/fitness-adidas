@@ -1,0 +1,10 @@
+<?php
+require("./".$prefijo."db/db.ftCamiseta.php");
+require("./".$prefijo."db/db.ftCiudad.php");
+require("./".$prefijo."db/db.ftDepartamento.php");
+require("./".$prefijo."db/db.ftLote.php");
+require("./".$prefijo."db/db.ftLoteXUsuario.php");
+require("./".$prefijo."db/db.ftRedimido.php");
+require("./".$prefijo."db/db.ftRefe.php");
+require("./".$prefijo."db/db.ftUsuario.php");
+?>
