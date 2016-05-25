@@ -1,15 +1,18 @@
 <?php
-require('db/requiers.php');
+require('db/requires.php');
 require('class/classCamiseta.php');
 
 /*se ejecutan eventos dependiendo de lo solicitado*/
 $varPost=filter_input_array(INPUT_POST);
 $camiseta=new camisetaFt();
 
+printVar($varPost);
 $vrtCtr=$varPost['vrtCrt'];
-switch ($varPost) {
+printVar($vrtCtr);
+switch ($vrtCtr) {
 	case 'ciudad':
 		# code...
+	//echo 'Hola';
 		  $idRegion=$varPost['idDepto'];
           $ciudad = $camiseta->traeCiudad($idRegion);
           //printVar($ciudad);

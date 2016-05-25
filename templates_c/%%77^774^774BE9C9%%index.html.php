@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.6, created on 2016-05-25 22:14:38
+<?php /* Smarty version 2.6.6, created on 2016-05-25 22:48:01
          compiled from index.html */ ?>
 <!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="es-CO"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="es-CO"> <![endif]-->
@@ -158,8 +158,7 @@
       <!--/-Género-->
       <!--Departamento-->
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 select">
-        <select name="departamento" class="form-control">
-          <option value="">Departamento</option>
+        <select name="departamento" id="departamento" class="form-control">
           <option value="">Departamento</option>
           <?php if (count($_from = (array)$this->_tpl_vars['regiones'])):
     foreach ($_from as $this->_tpl_vars['depto']):
@@ -173,10 +172,7 @@
       <!--/-Departamento-->
       <!--Ciudad-->
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 select">
-        <select name="ciudad" class="form-control">
-          <option value="">Ciudad</option>
-          <option value="">Ciudad</option>
-          <option value="">Ciudad</option>
+        <select name="ciudad" id="ciudad" class="form-control">
           <option value="">Ciudad</option>
         </select>
       </div>
@@ -263,4 +259,5 @@
   <script src="js/libs/Drift.min.js"></script>
   <script src="js/libs/bootstrap.min.js"></script>
   <script src="js/fitness-adidas.ini.js"></script>
+  <script src="js/fitness-eventos.js"></script>
 </body></html>

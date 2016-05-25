@@ -2,22 +2,22 @@
 class camisetaFt {
 
 	
-	public function traeCiudad($idRegion){
+	function traeCiudad($idRegion){
 
 	//DB_DataObject::debugLevel(5);
 		//Crea una nueva instancia de $tabla a partir de DataObject
-		$objDBO = DB_DataObject::Factory('MgmCiudad');
+		$objDBO = DB_DataObject::Factory('FtCiudad');
 		$objDBO -> selectadd();
-		$objDBO -> selectadd('id,ciudad');
-		$objDBO -> orderBy("id ASC");
-		$objDBO -> whereAdd("idRegion=" . $idRegion);
+		$objDBO -> selectadd('idCiudad,nombre');
+		$objDBO -> orderBy("idCiudad ASC");
+		$objDBO -> whereAdd("idDepto=" . $idRegion);
 		//$objDBO -> limit('1');
 		$objDBO -> find();
 		
 		$count = 0;
 		while ($objDBO -> fetch()) {
-			$ret[$count] -> id = $objDBO -> id;
-			$ret[$count] -> ciudad = $objDBO -> ciudad;
+			$ret[$count] -> idCiudad = $objDBO -> idCiudad;
+			$ret[$count] -> nombre = $objDBO -> nombre;
 			$count++;
 		}
 		//$ret = $ret + 1;
@@ -28,7 +28,7 @@ class camisetaFt {
 
 		}
 
-		public function traeDireccion($idCiudad){
+		/*public function traeDireccion($idCiudad){
 		//DB_DataObject::debugLevel(5);
 			//Crea una nueva instancia de $tabla a partir de DataObject
 		$objDBO = DB_DataObject::Factory('MgmTienda');
@@ -49,7 +49,7 @@ class camisetaFt {
 		//Libera el objeto DBO
 		$objDBO -> free();
 		return $ret;
-		}
+		}*/
 	
 
 
