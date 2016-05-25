@@ -103,9 +103,9 @@ jQuery(document).ready(function($) {
 
 	/*cambio de camiseta*/
 	/*set default de camiseta*/
-	camiseta.attr('src', 'images/camisetas/'+idCamiseta+'.png?w=340&amp;ch=DPR&amp;dpr=1');
+	// camiseta.attr('src', 'images/camisetas/'+idCamiseta+'.png?w=340&amp;ch=DPR&amp;dpr=1');
 	
-	camiseta.attr('data-zoom', 'images/camisetas/'+idCamiseta+'.png?w=1000&amp;ch=DPR&amp;dpr=1');
+	// camiseta.attr('data-zoom', 'images/camisetas/'+idCamiseta+'.png?w=1000&amp;ch=DPR&amp;dpr=1');
 
 	selectCamiseta.change(function() {
 
