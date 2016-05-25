@@ -1,5 +1,5 @@
 <?php
-class ciudadMaggi {
+class camisetaFt {
 
 	
 	public function traeCiudad($idRegion){
