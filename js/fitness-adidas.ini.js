@@ -81,10 +81,14 @@ jQuery(document).ready(function($) {
 	btnColor.click(function(event) {
 		
 		event.preventDefault();
+		var seleColor =$('img', this).attr('src');
 
 		btnColor.removeClass('color-active');
 
 		$(this).addClass('color-active');
+
+
+		camiseta.attr('src', seleColor);
 
 	});
 
@@ -128,7 +132,6 @@ jQuery(document).ready(function($) {
 
 
 	});
-
 
 	/*animacion label formulario*/
 	input.focus( function() {
