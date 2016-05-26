@@ -1,5 +1,7 @@
-<?php /* Smarty version 2.6.6, created on 2016-05-25 22:48:01
+<?php /* Smarty version 2.6.6, created on 2016-05-26 02:22:26
          compiled from index.html */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower', 'index.html', 49, false),)), $this); ?>
 <!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="es-CO"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="es-CO"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="es-CO"> <![endif]-->
@@ -11,10 +13,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Accept-CH" content="DPR, Width, Viewport-Width">
-  <link rel="stylesheet" href="css/animate.css">
-  <link rel="stylesheet" href="css/drift-basic.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/fitness-adidas.min.css">
   <link href="https://fonts.googleapis.com/css?family=Muli:400,300" rel="stylesheet" type="text/css"><!--[if lt IE]>
   <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -48,35 +48,29 @@
         <div class="tipo-camiseta">
           <label for="selector-camiseta">Camiseta:</label>
           <select name="selector-camiseta" id="selector-camiseta" class="form-control">
-            <option value="aa7145" data-color="unico">Adizero Tee</option>
-            <option value="ak0077" data-color="naranja">Aerok Tee</option>
-            <option value="ab5697" data-color="naranja">Aop Tee</option>
-            <option value="ao4918" data-color="rosa">Athletic Tee</option>
-            <option value="aj5366" data-color="azul">Basic 3S Tee</option>
-            <option value="aj5357" data-color="unico">Basic Solid Tee</option>
-            <option value="ai0877" data-color="verde">Climachill Tee</option>
-            <option value="aj4999" data-color="naranja">Club Tee</option>
-            <option value="aj4999" data-color="rosa">ESS 3S Slim Tee</option>
-            <option value="ab5823" data-color="unico">GS Edge Tee</option>
-            <option value="aa5619" data-color="negro">RS Cap SS W</option>
-            <option value="aa2630" data-color="unico">Run SS Laye Tee</option>
-            <option value="ak2106" data-color="naranja">SN S-S W</option>
-            <option value="ab6463" data-color="azul">Unctl Clmch Tee</option>
+            <option value="" >Selecciona una</option>
+            <?php if (count($_from = (array)$this->_tpl_vars['camisetasini'])):
+    foreach ($_from as $this->_tpl_vars['camiseta']):
+?>
+             <option value="<?php echo ((is_array($_tmp=$this->_tpl_vars['camiseta']->articuloSerial)) ? $this->_run_mod_handler('strtolower', true, $_tmp) : strtolower($_tmp)); ?>
+"><?php echo $this->_tpl_vars['camiseta']->nombre; ?>
+</option>
+             <?php endforeach; unset($_from); endif; ?>
           </select>
         </div>
-        <div class="contenedor-camiseta"><img id="camiseta" data-zoom class="img-responsive">
+        <div class="contenedor-camiseta"><img src="images/base-camiseta.png" id="camiseta" data-zoom class="img-responsive">
           <div class="detalle-camiseta"></div>
         </div>
         <div class="controles-camiseta">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <h3>Color</h3>
             <div class="colores">
-              <button type="button" class="color color-azul color-active"></button>
-              <button type="button" class="color color-blanco"></button>
-              <button type="button" class="color color-rojo"></button>
-              <button type="button" class="color color-cyan"></button>
-              <button type="button" class="color color-magenta"></button>
-              <button type="button" class="color color-amarillo"></button>
+              <button type="button" class="color color-active"></button>
+              <button type="button" class="color"></button>
+              <button type="button" class="color"></button>
+              <button type="button" class="color"></button>
+              <button type="button" class="color"></button>
+              <button type="button" class="color"></button>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -254,10 +248,7 @@
   </footer>
   <!--/-Footer-->
   <!--Scripts-->
-  <script src="js/libs/jquery.js"></script>
-  <script src="js/libs/jquery.validate.js"></script>
-  <script src="js/libs/Drift.min.js"></script>
-  <script src="js/libs/bootstrap.min.js"></script>
+  <script src="js/libs.fitness-adidas.min.js"></script>
   <script src="js/fitness-adidas.ini.js"></script>
   <script src="js/fitness-eventos.js"></script>
 </body></html>

@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
 			jQuery('#ciudad').removeAttr('disabled');
 			for (var i =0; i<conteo; i++ ) {
 				console.log(data[i]);
-				jQuery('#ciudad').append('<option value="'+data[i].id+'">'+data[i].ciudad+'</option>')
+				jQuery('#ciudad').append('<option value="'+data[i].idCiudad+'">'+data[i].nombre+'</option>')
 			}
 			 
 			

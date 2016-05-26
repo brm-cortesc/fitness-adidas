@@ -11,6 +11,7 @@ class DataObject_FtCamiseta extends DB_DataObject
     public $__table = 'ft_camiseta';                     // table name
     public $id;                              // int(11)  not_null primary_key auto_increment
     public $idRefe;                          // int(11)  
+    public $articuloSerial;                  // string(50)  
     public $nombre;                          // string(100)  
     public $cantidadXS;                      // int(11)  
     public $cantidadS;                       // int(11)  
@@ -27,6 +28,7 @@ class DataObject_FtCamiseta extends DB_DataObject
          return array(
              'id' =>  DB_DATAOBJECT_INT + DB_DATAOBJECT_NOTNULL,
              'idRefe' =>  DB_DATAOBJECT_INT,
+             'articuloSerial' =>  DB_DATAOBJECT_STR,
              'nombre' =>  DB_DATAOBJECT_STR,
              'cantidadXS' =>  DB_DATAOBJECT_INT,
              'cantidadS' =>  DB_DATAOBJECT_INT,
@@ -50,6 +52,7 @@ class DataObject_FtCamiseta extends DB_DataObject
     function defaults() // column default values 
     {
          return array(
+             'articuloSerial' => '',
              'nombre' => '',
          );
     }

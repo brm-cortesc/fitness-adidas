@@ -11,7 +11,7 @@ require($prefijo."db/requires.ini.php");
 
 //Clases
 require($prefijo."class/class.General.inc.php");
-//require($prefijo."class/datosGrafica.php");
+require($prefijo.'class/classCamiseta.php');
 
 //Smarty
 //echo $_SERVER["DOCUMENT_ROOT"];
