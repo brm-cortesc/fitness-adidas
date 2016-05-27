@@ -161,10 +161,11 @@ jQuery(document).ready(function(){
 
 
 	/*Registro*/
-	jQuery('.btn-registro').on('click',function(){
+	jQuery('#btn-registro').on('click',function(){
 		
 		if(jQuery('#registro').valid()){
-			jQuery('.btn-registro').hide('fade');
+			jQuery('#btn-redime').hide('fade');
+			jQuery('#btn-registro').hide('fade');
 			//console.log('es valido');
 			var nombre=jQuery('#nombres').val(),
 			apellido=jQuery('#apellidos').val(),
@@ -205,7 +206,8 @@ jQuery(document).ready(function(){
 					//console.log(data);
 					if(data=='exitoso'){
 						jQuery('.exitoso').removeClass('hidden');
-						jQuery('.btn-registro').show('fade');
+						
+						jQuery('#btn-registro').show('fade');
 					}
 				}
 
@@ -225,9 +227,13 @@ jQuery(document).ready(function(){
 				vrtCrt:'cc'
 			},
 			success: function (data){
-				console.log(data);
+				//console.log(data);
 				if(data!='existeC'){
 					jQuery('.registrousu').show('fade');
+					jQuery('#btn-redime').hide('fade');
+				}else{
+						jQuery('#btn-redime').show('fade');
+						//jQuery('.registrousu').detach();
 				}
 			}
 		});

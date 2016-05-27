@@ -106,7 +106,7 @@ switch ($vrtCtr) {
 
 			for ($i=1; $i <= 3; $i++) {
 				$conteoF=$campos['codigo'.$i];
-				printVar($conteoF);
+				//printVar($conteoF);
 				$codigos[$i]=$camiseta->valicaCodigo($conteoF);
 				//printVar($codigos[$i]);
 				# code...

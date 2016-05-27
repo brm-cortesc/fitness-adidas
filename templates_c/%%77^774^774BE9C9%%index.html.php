@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.6, created on 2016-05-28 01:13:37
+<?php /* Smarty version 2.6.6, created on 2016-05-28 01:21:46
          compiled from index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower', 'index.html', 50, false),)), $this); ?>
@@ -109,6 +109,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
         <input type="text" id="multi3" name="multi3" class="form-control" value=""disabled="disabled">
       </div>
       <!--Numeros de paquetes-->
+      <div class="clearfix"></div>
+      <button class="btn btn-registro" id="btn-redime">Redimir</button>
     </article>
     <article class="row registrousu" style="display:none;">
       <h2 class="text-center">Registra tus datos</h2>
@@ -236,7 +238,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       </div>
       <!--/-Términos y Condiciones-->
       <div class="clearfix"></div>
-      <button class="btn btn-registro">Registrar</button>
+      <button class="btn btn-registro" id="btn-registro">Registrar</button>
     </article>
   </form>
   <!--Footer-->
