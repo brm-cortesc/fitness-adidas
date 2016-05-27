@@ -92,14 +92,24 @@ jQuery(document).ready(function(){
 				console.log(data.relacionadas);
 				var camisetasR=data.relacionadas,
 				codCamisetaR,
-				conteoR=jQuery(camisetasR).length;
+				conteoR=jQuery(camisetasR).length,
+				cantidadXsR,
+				cantidadSR,
+				cantidadMR,
+				canitdadLR,
+				canitdadXlR;
 				for (var i = 0; i < conteoR; i++) {
 					console.log(camisetasR[i]);
 					codCamisetaR=camisetasR[i].articuloSerial.toLowerCase();
+					cantidadXsR=camisetasR[i].cantidadXS;
+					cantidadSR=camisetasR[i].cantidadS;
+					cantidadMR=camisetasR[i].cantidadM;
+					canitdadLR=camisetasR[i].cantidadL;
+					canitdadXlR=camisetasR[i].cantidadXL;
 					if(camisetasR[i].articuloSerial==camisetaSeleccionada){
-						jQuery('.colores').append('<button type="button" class="color color-active"><img src="images/camisetas/'+codCamisetaR+'.png"></button>');
+						jQuery('.colores').append('<button type="button" class="color color-active"><img src="images/camisetas/'+codCamisetaR+'.png" data-cantidadxs="'+cantidadXsR+'" data-cantidads="'+cantidadSR+'" data-cantidadm="'+cantidadMR+'" data-cantidadl="'+canitdadLR+'" data-cantidadxl="'+canitdadXlR+'"></button>');
 					}else{	
-						jQuery('.colores').append('<button type="button" class="color"><img src="images/camisetas/'+codCamisetaR+'.png"></button>');
+						jQuery('.colores').append('<button type="button" class="color"><img src="images/camisetas/'+codCamisetaR+'.png" data-cantidadxs="'+cantidadXsR+'" data-cantidads="'+cantidadSR+'" data-cantidadm="'+cantidadMR+'" data-cantidadl="'+canitdadLR+'" data-cantidadxl="'+canitdadXlR+'"></button>');
 					}
 					/*<button type="button" class="color color-active"><img src="images/camisetas/ak0077.png"></button>*/
              
