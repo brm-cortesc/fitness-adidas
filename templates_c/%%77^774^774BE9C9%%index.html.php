@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.6, created on 2016-05-28 01:21:46
+<?php /* Smarty version 2.6.6, created on 2016-05-28 01:36:24
          compiled from index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower', 'index.html', 50, false),)), $this); ?>
@@ -109,6 +109,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
         <input type="text" id="multi3" name="multi3" class="form-control" value=""disabled="disabled">
       </div>
       <!--Numeros de paquetes-->
+      <div class="clearfix"></div>
+      <div class="codnoValido"><p>Lo sentimos, los códigos ingresados no son válidos  </p></div>
       <div class="clearfix"></div>
       <button class="btn btn-registro" id="btn-redime">Redimir</button>
     </article>
