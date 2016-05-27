@@ -107,11 +107,10 @@ jQuery(document).ready(function(){
 					canitdadLR=camisetasR[i].cantidadL;
 					canitdadXlR=camisetasR[i].cantidadXL;
 					if(camisetasR[i].articuloSerial==camisetaSeleccionada){
-						jQuery('.colores').append('<button type="button" class="color color-active"><img src="images/camisetas/'+codCamisetaR+'.png" data-cantidadxs="'+cantidadXsR+'" data-cantidads="'+cantidadSR+'" data-cantidadm="'+cantidadMR+'" data-cantidadl="'+canitdadLR+'" data-cantidadxl="'+canitdadXlR+'"></button>');
+						jQuery('.colores').append('<button type="button" class="color color-active" data-cantidadxs="'+cantidadXsR+'" data-cantidads="'+cantidadSR+'" data-cantidadm="'+cantidadMR+'" data-cantidadl="'+canitdadLR+'" data-cantidadxl="'+canitdadXlR+'"><img src="images/camisetas/'+codCamisetaR+'.png"></button>');
 					}else{	
-						jQuery('.colores').append('<button type="button" class="color"><img src="images/camisetas/'+codCamisetaR+'.png" data-cantidadxs="'+cantidadXsR+'" data-cantidads="'+cantidadSR+'" data-cantidadm="'+cantidadMR+'" data-cantidadl="'+canitdadLR+'" data-cantidadxl="'+canitdadXlR+'"></button>');
+						jQuery('.colores').append('<button type="button" class="color" data-cantidadxs="'+cantidadXsR+'" data-cantidads="'+cantidadSR+'" data-cantidadm="'+cantidadMR+'" data-cantidadl="'+canitdadLR+'" data-cantidadxl="'+canitdadXlR+'"><img src="images/camisetas/'+codCamisetaR+'.png"></button>');
 					}
-					/*<button type="button" class="color color-active"><img src="images/camisetas/ak0077.png"></button>*/
              
 				};
 
@@ -121,5 +120,27 @@ jQuery(document).ready(function(){
 	
 		});
 	return false;
+	});
+
+	/*Valida códigos*/
+	jQuery('#multi1').on('blur',function(){
+		var multi1=jQuery(this).val();
+		if(multi1!=''){
+			jQuery('#multi2').removeAttr('disabled')
+		}
+	});
+	jQuery('#multi2').on('blur',function(){
+		var multi2=jQuery(this).val();
+		if(multi2!=''){
+			jQuery('#multi3').removeAttr('disabled')
+		}
+	});
+	jQuery('#multi3').blur(function(){
+		var cod1=jQuery('#multi1').val(),
+		cod2=jQuery('#multi2').val(),
+		cond3=jQuery('#multi3').val();
+		console.log(cod1);
+		console.log(cod2);
+		console.log(cond3);
 	});
 });

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.6, created on 2016-05-27 18:22:12
+<?php /* Smarty version 2.6.6, created on 2016-05-27 19:07:16
          compiled from index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower', 'index.html', 50, false),)), $this); ?>
@@ -86,15 +86,15 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       <!--Numeros de paquetes-->
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
         <label for="multi1">Multipack 1 (# de lote)</label>
-        <input type="text" id="multi1" name="multi1" class="form-control">
+        <input type="text" id="multi1" name="multi1" class="form-control" value="">
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
         <label for="multi2">Multipack 2 (# de lote)</label>
-        <input type="text" id="multi2" name="multi2" class="form-control">
+        <input type="text" id="multi2" name="multi2" class="form-control"value="" disabled="disabled">
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
         <label for="multi3">Multipack 3 (# de lote)</label>
-        <input type="text" id="multi3" name="multi3" class="form-control">
+        <input type="text" id="multi3" name="multi3" class="form-control" value=""disabled="disabled">
       </div>
       <!--Numeros de paquetes-->
     </article>
