@@ -154,7 +154,7 @@ $(document).on('click', '.color', function(event) {
 
 
 	camiseta.attr('src', seleColor);
-	camiseta.attr('data-zoom', 'images/camisetas/'+seleColor+'.png?w=1000&ch=DPR&dpr=2');
+	camiseta.attr('data-zoom', seleColor+'.png?w=1000&ch=DPR&dpr=2');
 
 	console.log('color');
 
