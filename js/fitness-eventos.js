@@ -99,7 +99,7 @@ jQuery(document).ready(function(){
 				canitdadLR,
 				canitdadXlR;
 				for (var i = 0; i < conteoR; i++) {
-					console.log(camisetasR[i]);
+					//console.log(camisetasR[i]);
 					codCamisetaR=camisetasR[i].articuloSerial.toLowerCase();
 					cantidadXsR=camisetasR[i].cantidadXS;
 					cantidadSR=camisetasR[i].cantidadS;

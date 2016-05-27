@@ -83,8 +83,8 @@ class camisetaFt {
 	function traeDatosRelacionados($relacionadas){
 		//DB_DataObject::debugLevel(5);
 		$camiseta= DB_DataObject::Factory('FtCamiseta');
-		$camiseta->selectadd();
-		$camiseta->selectadd('id,idRefe,articuloSerial,nombre,cantidadXS,cantidadS,cantidadM,cantidadL,cantidadXL');
+		$camiseta->selectAdd();
+		$camiseta->selectAdd('id,idRefe,articuloSerial,nombre,cantidadXS,cantidadS,cantidadM,cantidadL,cantidadXL');
 		$camiseta->whereAdd("idRefe ='".$relacionadas."'");
 		$camiseta->find();
 		$count = 0;
@@ -104,6 +104,21 @@ class camisetaFt {
 		$camiseta-> free();
 	}
 
+	/*Validación de los códigos*/
+	function valicaCodigo($codigo){
+		//DB_DataObject::debugLevel(5);
+		//printVar($codigo);
+		$codigos=DB_DataObject::Factory('FtLote');
+		$codigos->lote=$codigo;
+		$return =false;
+		$find=$codigos->find();
+		if($find>0){
+			$return = true;
+		}
+		
+		//printVar($return);
+		return $return;
+	}
 
 	}
 ?>
