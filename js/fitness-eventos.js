@@ -154,6 +154,11 @@ jQuery(document).ready(function(){
 			},
 			success: function (data){
 				console.log(data);
+				if(data!="codvalidos"){
+					jQuery('.codnoValido').show('fade');
+				}else{
+					jQuery('.codnoValido').hide('fade');
+				}
 			}
 		});
 		return false;
