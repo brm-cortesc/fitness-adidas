@@ -148,7 +148,7 @@ $(document).on('click', '.color', function(event) {
 	event.preventDefault();
 	var seleColor =$('img', this).attr('src');
 
-	btnColor.removeClass('color-active');
+	$('.color').removeClass('color-active');
 
 	$(this).addClass('color-active');
 
@@ -168,7 +168,7 @@ $(document).on('click', '.talla', function(event) {
 
 	console.log('talla');
 
-	btnTalla.removeClass('talla-active');
+	$('.talla').removeClass('talla-active');
 
 	$(this).addClass('talla-active');
 
