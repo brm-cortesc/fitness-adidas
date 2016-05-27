@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.6, created on 2016-05-27 19:07:16
+<?php /* Smarty version 2.6.6, created on 2016-05-28 01:13:37
          compiled from index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower', 'index.html', 50, false),)), $this); ?>
@@ -81,6 +81,18 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
     </div>
   </section>
   <form id="registro" class="container-fluid">
+    <article class="row">
+      <h2 class="text-center">Ingresa tu número de documento</h2>
+      <div class="col-lg-4 col-md-4 col-sm-8 col-lg-offset-4 col-md-offset-4 col-sm-offset-2">
+        <label for="documentoValidate">Número de documento</label>
+        <input type="text" id="documentoValidate" name="documentoValidate" class="form-control">
+      </div>
+    </article>
+    <!--Registro exitoso-->
+    <article class="row hidden exitoso">
+      <h2 class="text-center">Tus datos fueron guardados.</h2>
+    </article>
+    <!--/-Registro exitoso-->
     <article class="row multipacks">
       <h2 class="text-center">Registra los múltipacks</h2>
       <!--Numeros de paquetes-->
@@ -98,7 +110,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       </div>
       <!--Numeros de paquetes-->
     </article>
-    <article class="row">
+    <article class="row registrousu" style="display:none;">
       <h2 class="text-center">Registra tus datos</h2>
       <!--Nombres-->
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -130,13 +142,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
         <p>Género</p>
         <div class="radio">
           <label for="m">
-            <input type="radio" name="genero" id="m" /> Másculino
+            <input type="radio" name="genero" id="genero" value="m" /> Másculino
             
           </label>
         </div>
         <div class="radio">
           <label for="f">
-            <input type="radio" name="genero" id="f" /> Femenino
+            <input type="radio" name="genero" id="genero" value="f" /> Femenino
             
           </label>
         </div>
@@ -167,11 +179,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       <div class="tipo-docu">
         <!--Tipo de documento-->
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 select">
-          <select name="tipodoc" class="form-control">
+          <select name="tipodoc" id="tipodoc" class="form-control">
             <option value="">Tipo de documento</option>
-            <option value="">CC</option>
-            <option value="">CE</option>
-            <option value="">TI</option>
+            <option value="cc">CC</option>
+            <option value="ce">CE</option>
+            <option value="ti">TI</option>
           </select>
         </div>
         <!--/-Tipo de documento-->
@@ -194,13 +206,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
         <p>Deseo recibir información</p>
         <div class="checkbox">
           <label for="iemail">
-            <input type="checkbox" name="iemail" id="iemail" /> Email
+            <input type="checkbox" name="iemail" id="iemail" value="E"/> Email
             
           </label>
         </div>
         <div class="checkbox">
           <label for="itelefono">
-            <input type="checkbox" name="itelefono" id="itelefono" /> Teléfono
+            <input type="checkbox" name="itelefono" id="itelefono" value="T"/> Teléfono
             
           </label>
         </div>
@@ -210,7 +222,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 autorizo">
         <div class="checkbox">
           <label for="autorizo">
-            <input type="checkbox" name="autorizo" id="autorizo" /> Autorizo a NESTLÉ<sup>®</sup> para el tratamiento de mis datos personales.
+            <input type="checkbox" name="autorizo" id="autorizo" value="S" /> Autorizo a NESTLÉ<sup>®</sup> para el tratamiento de mis datos personales.
             
           </label>
         </div>
@@ -219,7 +231,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       <!--Términos y Condiciones-->
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 autorizo">
         <div class="checkbox">
-          <label for="terminos"><input type="checkbox" name="terminos" id="terminos" /> Acepto los términos y condiciones de la actividad</label>
+          <label for="terminos"><input type="checkbox" name="terminos" id="terminos"  value="S"/> Acepto los términos y condiciones de la actividad</label>
         </div>
       </div>
       <!--/-Términos y Condiciones-->

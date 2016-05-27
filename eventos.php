@@ -21,10 +21,44 @@ switch ($vrtCtr) {
 	/*Verifica si ya se encuentra registrada la cedula*/
 	case 'cc':
 		# code...
+		$cedula=$varPost['prodCedula'];
+		//printVar($cedula);
+
+		$existe=$camiseta->cedulaRegistrada($cedula);
+		//printVar($existe[0]->id);
+		if($existe[0]->id!=NULL || $existe[0]->id!=0){
+			$mensaje='existeC';
+		}else{
+			$mensaje='noexiste';
+		}
+		echo json_encode($mensaje);
 		break;
 	/*Registro de usuario*/
 	case 'registrar':
 		# code...
+		//printVar($varPost);
+		/*Datos de usauario*/
+		$campos['nombre']=$varPost['nombre'];
+		$campos['apellido']=$varPost['apellido'];
+		$campos['email']=$varPost['email'];
+		$campos['telefono']=$varPost['telefono'];
+		$campos['genero']=$varPost['genero'];
+		$campos['idDepto']=$varPost['idDepto'];
+		$campos['idCiudad']=$varPost['idCiudad'];
+		$campos['tipoDocumento']=$varPost['tipodoc'];
+		$campos['documento']=$varPost['documento'];
+		$campos['fnacimiento']=$varPost['nacimiento'];
+		$campos['deseoInformacion']=$varPost['iemail'].",".$varPost['itelefono'];
+		$campos['autorizaNestle']=$varPost['autorizo'];
+		$campos['aceptoTerminos']=$varPost['terminos'];
+		$guardaUsu=$camiseta->registraSolicitante($campos);
+		//printVar($guardaUsu);
+		if($guardaUsu>0){
+			$mensaje="exitoso";
+		}else{
+			$mensaje="noguarda";
+		}
+		echo json_encode($mensaje);
 		break;
 	/*Valida código de redención*/	
 	case 'validacodigo':
