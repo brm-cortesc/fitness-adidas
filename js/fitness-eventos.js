@@ -142,5 +142,19 @@ jQuery(document).ready(function(){
 		console.log(cod1);
 		console.log(cod2);
 		console.log(cond3);
+		jQuery.ajax({
+			 url: 'eventos.php',
+			dataType:'json' ,
+			type: 'POST',
+			data: {
+				codigo1:cod1,
+				codigo2:cod2,
+				codigo3:cond3,
+				vrtCrt:'validacodigo'
+			},
+			success: function (data){
+				console.log(data);
+			}
+		});
 	});
 });

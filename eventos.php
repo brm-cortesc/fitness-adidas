@@ -29,6 +29,10 @@ switch ($vrtCtr) {
 	/*Valida código de redención*/	
 	case 'validacodigo':
 		# code...
+		$codigo1=$varPost['codigo1'];
+		$codigo2=$varPost['codigo2'];
+		$codigo3=$varPost['codigo3'];
+		printVar($varPost);
 		break;
 	/*Trae datos de camiseta*/
 	case 'camiseta':
