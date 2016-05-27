@@ -89,7 +89,7 @@ jQuery(document).ready(function(){
 				};
 
 				/*Colores camisetas*/
-				console.log(data.relacionadas);
+				//console.log(data.relacionadas);
 				var camisetasR=data.relacionadas,
 				codCamisetaR,
 				conteoR=jQuery(camisetasR).length,
@@ -99,7 +99,7 @@ jQuery(document).ready(function(){
 				canitdadLR,
 				canitdadXlR;
 				for (var i = 0; i < conteoR; i++) {
-					console.log(camisetasR[i]);
+					//console.log(camisetasR[i]);
 					codCamisetaR=camisetasR[i].articuloSerial.toLowerCase();
 					cantidadXsR=camisetasR[i].cantidadXS;
 					cantidadSR=camisetasR[i].cantidadS;
@@ -139,9 +139,9 @@ jQuery(document).ready(function(){
 		var cod1=jQuery('#multi1').val(),
 		cod2=jQuery('#multi2').val(),
 		cond3=jQuery('#multi3').val();
-		console.log(cod1);
-		console.log(cod2);
-		console.log(cond3);
+		//console.log(cod1);
+		//console.log(cod2);
+		//console.log(cond3);
 		jQuery.ajax({
 			 url: 'eventos.php',
 			dataType:'json' ,
@@ -156,5 +156,87 @@ jQuery(document).ready(function(){
 				console.log(data);
 			}
 		});
+		return false;
 	});
+
+
+	/*Registro*/
+	jQuery('#btn-registro').on('click',function(){
+		
+		if(jQuery('#registro').valid()){
+			jQuery('#btn-redime').hide('fade');
+			jQuery('#btn-registro').hide('fade');
+			//console.log('es valido');
+			var nombre=jQuery('#nombres').val(),
+			apellido=jQuery('#apellidos').val(),
+			email=jQuery('#email').val(),
+			telefono=jQuery('#telefono').val(),
+			genero=jQuery('#genero').val(),
+			idDepto=jQuery('#departamento').val(),
+			idCiudad=jQuery('#ciudad').val(),
+			tipodoc=jQuery('#tipodoc').val(),
+			documento=jQuery('#documento').val(),
+			nacimiento=jQuery('#nacimiento').val(),
+			iemail=jQuery('#iemail').val(),
+			itelefono=jQuery('#itelefono').val(),
+			autorizo=jQuery('#autorizo').val(),
+			terminos=jQuery('#terminos').val();
+			jQuery.ajax({
+				url: 'eventos.php',
+				dataType:'json' ,
+				type: 'POST',
+				data: {
+					nombre:nombre,
+					apellido:apellido,
+					email:email,
+					telefono:telefono,
+					genero:genero,
+					idDepto:idDepto,
+					idCiudad:idCiudad,
+					tipodoc:tipodoc,
+					documento:documento,
+					nacimiento:nacimiento,
+					iemail:iemail,
+					itelefono:itelefono,
+					autorizo:autorizo,
+					terminos:terminos,
+					vrtCrt:'registrar'
+				},
+				success: function (data){
+					//console.log(data);
+					if(data=='exitoso'){
+						jQuery('.exitoso').removeClass('hidden');
+						
+						jQuery('#btn-registro').show('fade');
+					}
+				}
+
+			});
+			return false;
+		}
+	});
+	/*Valida cedula registrada*/
+	jQuery('#documentoValidate').on('blur',function(){
+		var prodCedula=jQuery('#documentoValidate').val();
+		jQuery.ajax({
+			 url: 'eventos.php',
+			dataType:'json' ,
+			type: 'POST',
+			data: {
+				prodCedula:prodCedula,
+				vrtCrt:'cc'
+			},
+			success: function (data){
+				//console.log(data);
+				if(data!='existeC'){
+					jQuery('.registrousu').show('fade');
+					jQuery('#btn-redime').hide('fade');
+				}else{
+						jQuery('#btn-redime').show('fade');
+						//jQuery('.registrousu').detach();
+				}
+			}
+		});
+	});
+
 });

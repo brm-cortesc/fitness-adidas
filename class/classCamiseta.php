@@ -16,8 +16,8 @@ class camisetaFt {
 		
 		$count = 0;
 		while ($objDBO -> fetch()) {
-			$ret[$count] -> idCiudad = $objDBO -> idCiudad;
-			$ret[$count] -> nombre = $objDBO -> nombre;
+			$ret[$count]->idCiudad = $objDBO->idCiudad;
+			$ret[$count]->nombre = utf8_encode($objDBO->nombre);
 			$count++;
 		}
 		//$ret = $ret + 1;
@@ -83,8 +83,8 @@ class camisetaFt {
 	function traeDatosRelacionados($relacionadas){
 		//DB_DataObject::debugLevel(5);
 		$camiseta= DB_DataObject::Factory('FtCamiseta');
-		$camiseta->selectadd();
-		$camiseta->selectadd('id,idRefe,articuloSerial,nombre,cantidadXS,cantidadS,cantidadM,cantidadL,cantidadXL');
+		$camiseta->selectAdd();
+		$camiseta->selectAdd('id,idRefe,articuloSerial,nombre,cantidadXS,cantidadS,cantidadM,cantidadL,cantidadXL');
 		$camiseta->whereAdd("idRefe ='".$relacionadas."'");
 		$camiseta->find();
 		$count = 0;
@@ -104,6 +104,62 @@ class camisetaFt {
 		$camiseta-> free();
 	}
 
-
+	/*Validación de los códigos*/
+	function valicaCodigo($codigo){
+		//DB_DataObject::debugLevel(5);
+		//printVar($codigo);
+		$codigos=DB_DataObject::Factory('FtLote');
+		$codigos->lote=$codigo;
+		$return =false;
+		$find=$codigos->find();
+		if($find>0){
+			$return = true;
+		}
+		
+		//printVar($return);
+		return $return;
 	}
+
+	function registraSolicitante($campos){
+		//printVar($campos);
+		//DB_DataObject::debugLevel(3);
+		$dbdata = DB_DataObject::Factory('FtUsuario');
+		$dbdata->nombre = $campos['nombre'];
+		$dbdata->apellido =  $campos['apellido'];
+		$dbdata->email = $campos['email'];
+		$dbdata->telefono = $campos['telefono'];
+		$dbdata->genero = $campos['genero'];
+		$dbdata->idDepto = $campos['idDepto'];
+		$dbdata->idCiudad = $campos['idCiudad'];
+		$dbdata->tipoDocumento = $campos['tipoDocumento'];
+		$dbdata->documento = $campos['documento'];
+		$dbdata->fechaNacimiento = $campos['fnacimiento'];
+		$dbdata->deseoInformacion = $campos['deseoInformacion'];
+		$dbdata->autorizaNestle = $campos['autorizaNestle'];
+		$dbdata->aceptoTerminos = $campos['aceptoTerminos'];
+		$dbdata->fecha = date("Y-m-d H:i:s");
+
+		$dbdata -> insert();
+
+		$dbdata -> free();
+		return $dbdata->id;
+	}
+	/*Valida cedula registrada*/
+	function cedulaRegistrada($cedula){
+		$dbdata = DB_DataObject::Factory('FtUsuario');
+		$dbdata->selectAdd();
+		$dbdata->selectAdd('id,documento');
+		$dbdata->whereAdd("documento ='".$cedula."'");
+		$dbdata->find();
+		$count = 0;
+		while ($dbdata -> fetch()) {
+			$cedulaE[$count] -> id = $dbdata -> id;
+			$cedulaE[$count] -> documento = $dbdata -> documento;
+			$count++;
+		}
+		//printVar($existe);
+		return $cedulaE;
+		$dbdata-> free();
+	}
+}
 ?>
