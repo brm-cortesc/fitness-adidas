@@ -76,33 +76,7 @@ jQuery(document).ready(function($) {
 		});
 
 
-	/*boton de color activo*/
 	
-	btnColor.click(function(event) {
-		
-		event.preventDefault();
-		var seleColor =$('img', this).attr('src');
-
-		btnColor.removeClass('color-active');
-
-		$(this).addClass('color-active');
-
-
-		camiseta.attr('src', seleColor);
-
-	});
-
-	/*boton de talla activo*/
-
-	btnTalla.click(function(event) {
-		
-		event.preventDefault();
-
-		btnTalla.removeClass('talla-active');
-
-		$(this).addClass('talla-active');
-
-	});
 
 
 	/*cambio de camiseta*/
@@ -166,3 +140,37 @@ jQuery(document).ready(function($) {
 	}, 1000);
 
 });
+
+/*boton de talla activo*/
+
+$(document).on('click', '.color', function(event) {
+	
+	event.preventDefault();
+	var seleColor =$('img', this).attr('src');
+
+	btnColor.removeClass('color-active');
+
+	$(this).addClass('color-active');
+
+
+	camiseta.attr('src', seleColor);
+
+	console.log('color');
+
+});
+
+/*boton de talla activo*/
+
+
+$(document).on('click', '.talla', function(event) {
+
+	event.preventDefault();
+
+	console.log('talla');
+
+	btnTalla.removeClass('talla-active');
+
+	$(this).addClass('talla-active');
+
+});
+
