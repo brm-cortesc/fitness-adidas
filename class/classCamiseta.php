@@ -54,6 +54,55 @@ class camisetaFt {
 		$objDBO -> free();
 
 	}
+	/*Funcion para traer los datos de la camiseta seleccionada*/
+	function traeDatosCamiseta($codCamiseta){
+		//DB_DataObject::debugLevel(5);
+		$camiseta= DB_DataObject::Factory('FtCamiseta');
+		$camiseta->selectadd();
+		$camiseta->selectadd('id,idRefe,articuloSerial,nombre,cantidadXS,cantidadS,cantidadM,cantidadL,cantidadXL');
+		$camiseta->whereAdd("articuloSerial ='".$codCamiseta."'");
+		$camiseta->find();
+		$count = 0;
+		while ($camiseta -> fetch()) {
+			$camisa[$count] -> id = $camiseta -> id;
+			$camisa[$count] -> nombre = $camiseta -> nombre;
+			$camisa[$count] -> idRefe = $camiseta -> idRefe;
+			$camisa[$count] -> articuloSerial = $camiseta -> articuloSerial;
+			$camisa[$count] -> cantidadXS = $camiseta -> cantidadXS;
+			$camisa[$count] -> cantidadS = $camiseta -> cantidadS;
+			$camisa[$count] -> cantidadM = $camiseta -> cantidadM;
+			$camisa[$count] -> cantidadL = $camiseta -> cantidadL;
+			$camisa[$count] -> cantidadXL = $camiseta -> cantidadXL;
+			$count++;
+		}
+		return $camisa;
+		$camiseta-> free();
+
+	}
+	/*Camisetas relacionadas*/
+	function traeDatosRelacionados($relacionadas){
+		//DB_DataObject::debugLevel(5);
+		$camiseta= DB_DataObject::Factory('FtCamiseta');
+		$camiseta->selectadd();
+		$camiseta->selectadd('id,idRefe,articuloSerial,nombre,cantidadXS,cantidadS,cantidadM,cantidadL,cantidadXL');
+		$camiseta->whereAdd("idRefe ='".$relacionadas."'");
+		$camiseta->find();
+		$count = 0;
+		while ($camiseta -> fetch()) {
+			$camisa[$count] -> id = $camiseta -> id;
+			$camisa[$count] -> nombre = $camiseta -> nombre;
+			$camisa[$count] -> idRefe = $camiseta -> idRefe;
+			$camisa[$count] -> articuloSerial = $camiseta -> articuloSerial;
+			$camisa[$count] -> cantidadXS = $camiseta -> cantidadXS;
+			$camisa[$count] -> cantidadS = $camiseta -> cantidadS;
+			$camisa[$count] -> cantidadM = $camiseta -> cantidadM;
+			$camisa[$count] -> cantidadL = $camiseta -> cantidadL;
+			$camisa[$count] -> cantidadXL = $camiseta -> cantidadXL;
+			$count++;
+		}
+		return $camisa;
+		$camiseta-> free();
+	}
 
 
 	}

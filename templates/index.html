@@ -43,10 +43,11 @@
       <article class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-camisetas">
         <div class="tipo-camiseta">
           <label for="selector-camiseta">Camiseta:</label>
-          <select name="selector-camiseta" id="selector-camiseta" class="form-control">
+          <select name="selector-camiseta" id="selector-camiseta" class="form-control" value="" data-cod="">
             <option value="" >Selecciona una</option>
+
             {#foreach from=$camisetasini item=camiseta#}
-             <option value="{#$camiseta->articuloSerial|strtolower#}">{#$camiseta->nombre#}</option>
+             <option value="{#$camiseta->articuloSerial|strtolower#}" data-cod="{#$camiseta->idRefe#}">{#$camiseta->nombre#}</option>
              {#/foreach#}
           </select>
         </div>
@@ -56,23 +57,13 @@
         <div class="controles-camiseta">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <h3>Color</h3>
-            <div class="colores">
-              <button type="button" class="color color-active"></button>
-              <button type="button" class="color"></button>
-              <button type="button" class="color"></button>
-              <button type="button" class="color"></button>
-              <button type="button" class="color"></button>
-              <button type="button" class="color"></button>
+            <div class="colores" style="display:none;">
+             
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <h3>Talla</h3>
-            <div class="tallas">
-              <button type="button" class="talla-active talla">xs</button>
-              <button type="button" class="talla">s</button>
-              <button type="button" class="talla">m</button>
-              <button type="button" class="talla">l</button>
-              <button type="button" class="talla">xl</button>
+            <div class="tallas" style="display:none;">
             </div>
           </div>
         </div>

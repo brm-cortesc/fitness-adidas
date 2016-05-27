@@ -1,6 +1,6 @@
 <?php
 require('db/requires.php');
-
+ini_set('display_errors','0');
 /*se ejecutan eventos dependiendo de lo solicitado*/
 $varPost=filter_input_array(INPUT_POST);
 $camiseta=new camisetaFt();
@@ -26,8 +26,18 @@ switch ($vrtCtr) {
 	case 'registrar':
 		# code...
 		break;
+	/*Valida código de redención*/	
 	case 'validacodigo':
 		# code...
+		break;
+	/*Trae datos de camiseta*/
+	case 'camiseta':
+		# code...
+		$codCamiseta=strtoupper($varPost['codCamiseta']);
+		//printVar($codCamiseta);
+		$datosC=$camiseta->traeDatosCamiseta($codCamiseta);
+		$codCamisetaR=$camiseta->traeDatosRelacionados($varPost['relacionadas']);
+		echo json_encode(array("camisetas"=>$datosC, "relacionadas"=>$codCamisetaR));
 		break;
 	
 	default:

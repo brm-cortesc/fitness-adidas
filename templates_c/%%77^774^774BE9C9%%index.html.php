@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.6, created on 2016-05-26 02:22:26
+<?php /* Smarty version 2.6.6, created on 2016-05-27 18:22:12
          compiled from index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower', 'index.html', 49, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower', 'index.html', 50, false),)), $this); ?>
 <!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="es-CO"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="es-CO"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="es-CO"> <![endif]-->
@@ -47,12 +47,14 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       <article class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-camisetas">
         <div class="tipo-camiseta">
           <label for="selector-camiseta">Camiseta:</label>
-          <select name="selector-camiseta" id="selector-camiseta" class="form-control">
+          <select name="selector-camiseta" id="selector-camiseta" class="form-control" value="" data-cod="">
             <option value="" >Selecciona una</option>
+
             <?php if (count($_from = (array)$this->_tpl_vars['camisetasini'])):
     foreach ($_from as $this->_tpl_vars['camiseta']):
 ?>
              <option value="<?php echo ((is_array($_tmp=$this->_tpl_vars['camiseta']->articuloSerial)) ? $this->_run_mod_handler('strtolower', true, $_tmp) : strtolower($_tmp)); ?>
+" data-cod="<?php echo $this->_tpl_vars['camiseta']->idRefe; ?>
 "><?php echo $this->_tpl_vars['camiseta']->nombre; ?>
 </option>
              <?php endforeach; unset($_from); endif; ?>
@@ -64,23 +66,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
         <div class="controles-camiseta">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <h3>Color</h3>
-            <div class="colores">
-              <button type="button" class="color color-active"></button>
-              <button type="button" class="color"></button>
-              <button type="button" class="color"></button>
-              <button type="button" class="color"></button>
-              <button type="button" class="color"></button>
-              <button type="button" class="color"></button>
+            <div class="colores" style="display:none;">
+             
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <h3>Talla</h3>
-            <div class="tallas">
-              <button type="button" class="talla-active talla">xs</button>
-              <button type="button" class="talla">s</button>
-              <button type="button" class="talla">m</button>
-              <button type="button" class="talla">l</button>
-              <button type="button" class="talla">xl</button>
+            <div class="tallas" style="display:none;">
             </div>
           </div>
         </div>
