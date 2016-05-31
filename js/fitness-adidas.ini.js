@@ -15,7 +15,7 @@ jQuery(document).ready(function($) {
 
 		      /*Contenedor y clase donde se pinta el error*/
 		      errorElement: "div",
-		      errorClass: "alert-danger",
+		      errorClass: "mensaje-sistema",
 
 		      /*Campos para validar en form para pedir fiesta*/
 
@@ -156,7 +156,9 @@ $(document).on('click', '.color', function(event) {
 	camiseta.attr('src', seleColor);
 	camiseta.attr('data-zoom', seleColor+'?w=1000&ch=DPR&dpr=2');
 
-	console.log('color');
+	//console.log('color');
+
+
 
 });
 
@@ -167,7 +169,7 @@ $(document).on('click', '.talla', function(event) {
 
 	event.preventDefault();
 
-	console.log('talla');
+	//console.log('talla');
 
 	$('.talla').removeClass('talla-active');
 

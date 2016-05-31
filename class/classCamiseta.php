@@ -161,5 +161,48 @@ class camisetaFt {
 		return $cedulaE;
 		$dbdata-> free();
 	}
+	/*Redención camisetas*/
+	function redimeCamiseta($camiseta){
+		//DB_DataObject::debugLevel(3);
+		//printVar($camiseta);
+		$redime=DB_DataObject::Factory('FtCamiseta');
+
+		$redime->cantidadXS=$camiseta['cantidadXS'];
+		$redime->cantidadS=$camiseta['cantidadS'];
+		$redime->cantidadM=$camiseta['cantidadM'];
+		$redime->cantidadL=$camiseta['cantidadL'];
+		$redime->cantidadXL=$camiseta['cantidadXL'];
+		$redime-> whereAdd("articuloSerial='" . $camiseta['refeCamiseta']."'");
+		$redime -> find();
+		$ret = $redime -> update(DB_DATAOBJECT_WHEREADD_ONLY);
+		//printVar($ret);
+		$redime -> free();
+		return $ret;
+
+	}
+	/*Lote y camiseta*/
+	function usuarioCamisetaLote($camps){
+		//printVar($camps);
+		$redimeU=DB_DataObject::Factory('FtLoteXUsuario');
+		$redimeU->lote = $camps['lote'];
+		$redimeU->idUsuario =  $camps['idUsuario'];
+		$redimeU->refeCamiseta = $camps['refeCamiseta'];
+		$redimeU->fecha = date("Y-m-d H:i:s");
+		$redimeU -> insert();
+		$redimeU -> free();
+		return $redimeU->id;
+		
+	}
+
+	/*Cuenta camisetas por usuario*/
+	function cuentaUsuario($idUsuario){
+
+		//printVar($idUsuario);
+		$usuario=DB_DataObject::Factory('FtLoteXUsuario');
+		$usuario->whereAdd("idUsuario='".$idUsuario."'");
+		$total = $usuario->count(DB_DATAOBJECT_WHEREADD_ONLY);
+		$usuario->free();
+		return $total;
+	}
 }
 ?>

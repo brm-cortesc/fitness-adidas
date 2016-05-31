@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.6, created on 2016-05-28 01:36:24
+<?php /* Smarty version 2.6.6, created on 2016-05-28 06:17:03
          compiled from index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower', 'index.html', 50, false),)), $this); ?>
@@ -61,7 +61,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
           </select>
         </div>
         <div class="contenedor-camiseta"><img src="images/base-camiseta.png" id="camiseta" data-zoom class="img-responsive">
-          <div class="detalle-camiseta"></div>
+          <div class="detalle-camiseta">
+            <input type="hidden" id="detalleCamiseta" class="clearI" name="detalleCamiseta" value="">
+          </div>
         </div>
         <div class="controles-camiseta">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -81,11 +83,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
     </div>
   </section>
   <form id="registro" class="container-fluid">
-    <article class="row">
+    <article class="row cedulaValid">
       <h2 class="text-center">Ingresa tu número de documento</h2>
-      <div class="col-lg-4 col-md-4 col-sm-8 col-lg-offset-4 col-md-offset-4 col-sm-offset-2">
+      <div class="col-lg-4 col-md-4 col-sm-8 col-lg-offset-4 col-md-offset-4 col-sm-offset-2" id="validacedula">
         <label for="documentoValidate">Número de documento</label>
-        <input type="text" id="documentoValidate" name="documentoValidate" class="form-control">
+        <input type="text" id="documentoValidate" name="documentoValidate" class="form-control clearI">
       </div>
     </article>
     <!--Registro exitoso-->
@@ -98,19 +100,19 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       <!--Numeros de paquetes-->
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
         <label for="multi1">Multipack 1 (# de lote)</label>
-        <input type="text" id="multi1" name="multi1" class="form-control" value="">
+        <input type="text" id="multi1" name="multi1" class="form-control clearI" value="">
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
         <label for="multi2">Multipack 2 (# de lote)</label>
-        <input type="text" id="multi2" name="multi2" class="form-control"value="" disabled="disabled">
+        <input type="text" id="multi2" name="multi2" class="form-control clearI" value="" disabled="disabled">
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
         <label for="multi3">Multipack 3 (# de lote)</label>
-        <input type="text" id="multi3" name="multi3" class="form-control" value=""disabled="disabled">
+        <input type="text" id="multi3" name="multi3" class="form-control clearI" value=""disabled="disabled">
       </div>
       <!--Numeros de paquetes-->
       <div class="clearfix"></div>
-      <div class="codnoValido"><p>Lo sentimos, los códigos ingresados no son válidos  </p></div>
+      <div class="codnoValido"></div>
       <div class="clearfix"></div>
       <button class="btn btn-registro" id="btn-redime">Redimir</button>
     </article>
@@ -119,25 +121,25 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       <!--Nombres-->
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <label for="nombres">Nombre(s)</label>
-        <input type="text" id="nombres" name="nombres" class="form-control">
+        <input type="text" id="nombres" name="nombres" class="form-control clearI">
       </div>
       <!--/-Nombres-->
       <!--Apellidos-->
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <label for="apellidos">Apellidos</label>
-        <input type="text" id="apellidos" name="apellidos" class="form-control">
+        <input type="text" id="apellidos" name="apellidos" class="form-control clearI">
       </div>
       <!--/-Apellidos			-->
       <!--Email-->
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <label for="email">Email</label>
-        <input type="text" id="email" name="email" class="form-control">
+        <input type="text" id="email" name="email" class="form-control clearI">
       </div>
       <!--/-Email-->
       <!--Teléfono-->
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <label for="telefono">Teléfono</label>
-        <input type="text" id="telefono" name="telefono" class="form-control">
+        <input type="text" id="telefono" name="telefono" class="form-control clearI">
       </div>
       <!--/-Teléfono-->
       <div class="clearfix"></div>
@@ -146,13 +148,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
         <p>Género</p>
         <div class="radio">
           <label for="m">
-            <input type="radio" name="genero" id="genero" value="m" /> Másculino
+            <input type="radio" name="genero" id="genero" value="m" class="clearI"/> Másculino
             
           </label>
         </div>
         <div class="radio">
           <label for="f">
-            <input type="radio" name="genero" id="genero" value="f" /> Femenino
+            <input type="radio" name="genero" id="genero" value="f" class="clearI" /> Femenino
             
           </label>
         </div>
@@ -160,7 +162,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       <!--/-Género-->
       <!--Departamento-->
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 select">
-        <select name="departamento" id="departamento" class="form-control">
+        <select name="departamento" id="departamento" class="form-control clearI" >
           <option value="">Departamento</option>
           <?php if (count($_from = (array)$this->_tpl_vars['regiones'])):
     foreach ($_from as $this->_tpl_vars['depto']):
@@ -174,7 +176,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       <!--/-Departamento-->
       <!--Ciudad-->
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 select">
-        <select name="ciudad" id="ciudad" class="form-control">
+        <select name="ciudad" id="ciudad" class="form-control clearI">
           <option value="">Ciudad</option>
         </select>
       </div>
@@ -183,7 +185,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       <div class="tipo-docu">
         <!--Tipo de documento-->
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 select">
-          <select name="tipodoc" id="tipodoc" class="form-control">
+          <select name="tipodoc" id="tipodoc" class="form-control clearI">
             <option value="">Tipo de documento</option>
             <option value="cc">CC</option>
             <option value="ce">CE</option>
@@ -194,13 +196,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
         <!--Número de documento-->
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
           <label for="documento">Número de documento</label>
-          <input type="text" id="documento" name="documento" class="form-control">
+          <input type="text" id="documento" name="documento" class="form-control clearI">
         </div>
         <!--/-Número de documento-->
         <!--Fecha de nacimiento-->
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
           <label for="nacimiento">Fecha de nacimiento</label>
-          <input type="text" id="nacimiento" name="nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control">
+          <input type="text" id="nacimiento" name="nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control clearI">
         </div>
         <!--/-Fecha de nacimiento-->
       </div>
@@ -210,13 +212,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
         <p>Deseo recibir información</p>
         <div class="checkbox">
           <label for="iemail">
-            <input type="checkbox" name="iemail" id="iemail" value="E"/> Email
+            <input type="checkbox" name="iemail" id="iemail" value="E" class="clearI"/> Email
             
           </label>
         </div>
         <div class="checkbox">
           <label for="itelefono">
-            <input type="checkbox" name="itelefono" id="itelefono" value="T"/> Teléfono
+            <input type="checkbox" name="itelefono" id="itelefono" value="T" class="clearI"/> Teléfono
             
           </label>
         </div>
@@ -226,7 +228,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 autorizo">
         <div class="checkbox">
           <label for="autorizo">
-            <input type="checkbox" name="autorizo" id="autorizo" value="S" /> Autorizo a NESTLÉ<sup>®</sup> para el tratamiento de mis datos personales.
+            <input type="checkbox" name="autorizo" id="autorizo" value="S" class="clearI"/> Autorizo a NESTLÉ<sup>®</sup> para el tratamiento de mis datos personales.
             
           </label>
         </div>
@@ -235,7 +237,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strtolower'
       <!--Términos y Condiciones-->
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 autorizo">
         <div class="checkbox">
-          <label for="terminos"><input type="checkbox" name="terminos" id="terminos"  value="S"/> Acepto los términos y condiciones de la actividad</label>
+          <label for="terminos"><input type="checkbox" name="terminos" id="terminos"  class="clearI" value="S"/> Acepto los términos y condiciones de la actividad</label>
         </div>
       </div>
       <!--/-Términos y Condiciones-->

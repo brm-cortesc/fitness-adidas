@@ -36,7 +36,8 @@ jQuery(document).ready(function(){
 		var codCamiseta=jQuery(this).val(),
 		relacionadas=jQuery('option:selected').attr('data-cod'),
 		camisetaSeleccionada=codCamiseta.toUpperCase();
-		console.log(camisetaSeleccionada);
+		codCamisetaI=jQuery('#detalleCamiseta').val(camisetaSeleccionada);
+		//console.log(camisetaSeleccionada);
 		jQuery('.tallas > button').detach();
 		jQuery('.colores > button').detach();
 		//console.log(codCamiseta);
@@ -107,9 +108,9 @@ jQuery(document).ready(function(){
 					canitdadLR=camisetasR[i].cantidadL;
 					canitdadXlR=camisetasR[i].cantidadXL;
 					if(camisetasR[i].articuloSerial==camisetaSeleccionada){
-						jQuery('.colores').append('<button type="button" class="color color-active" data-cantidadxs="'+cantidadXsR+'" data-cantidads="'+cantidadSR+'" data-cantidadm="'+cantidadMR+'" data-cantidadl="'+canitdadLR+'" data-cantidadxl="'+canitdadXlR+'"><img src="images/camisetas/'+codCamisetaR+'.png"></button>');
+						jQuery('.colores').append('<button type="button" data-cod="'+camisetasR[i].articuloSerial+'" class="color color-active" data-cantidadxs="'+cantidadXsR+'" data-cantidads="'+cantidadSR+'" data-cantidadm="'+cantidadMR+'" data-cantidadl="'+canitdadLR+'" data-cantidadxl="'+canitdadXlR+'"><img src="images/camisetas/'+codCamisetaR+'.png"></button>');
 					}else{	
-						jQuery('.colores').append('<button type="button" class="color" data-cantidadxs="'+cantidadXsR+'" data-cantidads="'+cantidadSR+'" data-cantidadm="'+cantidadMR+'" data-cantidadl="'+canitdadLR+'" data-cantidadxl="'+canitdadXlR+'"><img src="images/camisetas/'+codCamisetaR+'.png"></button>');
+						jQuery('.colores').append('<button type="button"  data-cod="'+camisetasR[i].articuloSerial+'"class="color" data-cantidadxs="'+cantidadXsR+'" data-cantidads="'+cantidadSR+'" data-cantidadm="'+cantidadMR+'" data-cantidadl="'+canitdadLR+'" data-cantidadxl="'+canitdadXlR+'"><img src="images/camisetas/'+codCamisetaR+'.png"></button>');
 					}
              
 				};
@@ -155,7 +156,7 @@ jQuery(document).ready(function(){
 			success: function (data){
 				console.log(data);
 				if(data!="codvalidos"){
-					jQuery('.codnoValido').show('fade');
+					jQuery('.codnoValido').html('<p>Lo sentimos, los códigos ingresados no son válidos</p>').show('fade');
 				}else{
 					jQuery('.codnoValido').hide('fade');
 				}
@@ -185,7 +186,12 @@ jQuery(document).ready(function(){
 			iemail=jQuery('#iemail').val(),
 			itelefono=jQuery('#itelefono').val(),
 			autorizo=jQuery('#autorizo').val(),
-			terminos=jQuery('#terminos').val();
+			terminos=jQuery('#terminos').val(),
+			cod1=jQuery('#multi1').val(),
+			cod2=jQuery('#multi2').val(),
+			cod3=jQuery('#multi3').val(),
+			codCamisetaRede=jQuery('#detalleCamiseta').val(),
+			tallaSelec=jQuery('.talla-active').text();;			
 			jQuery.ajax({
 				url: 'eventos.php',
 				dataType:'json' ,
@@ -205,12 +211,21 @@ jQuery(document).ready(function(){
 					itelefono:itelefono,
 					autorizo:autorizo,
 					terminos:terminos,
+					cod1:cod1,
+					cod2:cod2,
+					cod3:cod3,
+					codCamisetaRede:codCamisetaRede,
+					tallaSelec:tallaSelec,
 					vrtCrt:'registrar'
 				},
 				success: function (data){
 					//console.log(data);
 					if(data=='exitoso'){
+
 						jQuery('.exitoso').removeClass('hidden');
+						jQuery('.clearI').val('');
+						jQuery('.registrousu').hide('fade');
+						jQuery('.multipacks').hide('fade');
 						
 						jQuery('#btn-registro').show('fade');
 					}
@@ -234,7 +249,10 @@ jQuery(document).ready(function(){
 			success: function (data){
 				//console.log(data);
 				if(data!='existeC'){
+					jQuery('.cedulaValid').hide('fade');
 					jQuery('.registrousu').show('fade');
+					jQuery('#validacedula').hide('fade');
+					jQuery('#documento').val(prodCedula).parent().addClass('active');
 					jQuery('#btn-redime').hide('fade');
 				}else{
 						jQuery('#btn-redime').show('fade');
@@ -244,4 +262,87 @@ jQuery(document).ready(function(){
 		});
 	});
 
+	/*Eventos cambio camiseta*/
+	jQuery(document).on('click','.color',function(){
+		//console.log('hola');
+		var codCamiseta=jQuery(this).attr('data-cod'),
+		cantidadXsS=jQuery(this).attr('data-cantidadxs'),
+		cantidadSS=jQuery(this).attr('data-cantidads'),
+		cantidadMS=jQuery(this).attr('data-cantidadm'),
+		cantidadLS=jQuery(this).attr('data-cantidadl'),
+		cantidadXLS=jQuery(this).attr('data-cantidadxl');
+		jQuery('#detalleCamiseta').val(codCamiseta)
+		jQuery('.tallas > button').detach();
+		if (cantidadXsS>0){
+			jQuery('.tallas').append('<button type="button" class="talla-active talla">xs</button>');
+		}
+		if (cantidadSS>0){
+			jQuery('.tallas').append('<button type="button" class="talla">s</button>');
+		}
+		if (cantidadMS>0){
+			jQuery('.tallas').append('<button type="button" class="talla">m</button>');
+		}
+		if (cantidadLS>0){
+			jQuery('.tallas').append('<button type="button" class="talla">l</button>');
+		}
+		if (cantidadXLS>0){
+			jQuery('.tallas').append(' <button type="button" class="talla">xl</button>');
+		}
+		
+	})
+	/*Redime camisetaSeleccionada*/
+
+	jQuery('#btn-redime').on('click',function(){
+		var codCamisetaRede=jQuery('#detalleCamiseta').val(),
+		prodCedula=jQuery('#documentoValidate').val();
+		tallaSelec=jQuery('.talla-active').text();
+		var cod1=jQuery('#multi1').val(),
+		cod2=jQuery('#multi2').val(),
+		cod3=jQuery('#multi3').val();
+		if(jQuery(codCamisetaRede)!=''){
+			jQuery.ajax({
+			url: 'eventos.php',
+			dataType:'json' ,
+			type: 'POST',
+			data: {
+				codCamisetaRede:codCamisetaRede,
+				prodCedula:prodCedula,
+				tallaSelec:tallaSelec,
+				cod1:cod1,
+				cod2:cod2,
+				cod3:cod3,
+
+				vrtCrt:'redime'
+			},
+			success: function (data){
+				console.log(data);
+				if(data=='maximo'){
+					//console.log('hola');
+					jQuery('.codnoValido').html('<p>Solo se permiten dos camisetas por usuario</p>').show('fade');
+					jQuery('#btn-redime').hide('fade');
+				}else if(data=='existeC'){
+					jQuery('#btn-redime').show('fade');
+					
+				}else if(data=='redime'){
+					jQuery('.codnoValido').html('<p>Redimiste tu segunda prenda</p>').show('fade');
+				}else if(data=='vacio'){
+					jQuery('.codnoValido').html('<p>Debes ingresar un número de cédula</p>').show('fade');
+				}else if(data=='nocamiseta'){
+					jQuery('.codnoValido').html('<p>Selecciona una prenda</p>').show('fade');
+				}else if(data=='novienecod'){
+					jQuery('.codnoValido').html('<p>Debes ingresar los tres códigos</p>').show('fade');
+				}else{
+					jQuery('.registrousu').show('fade');
+					jQuery('#btn-redime').hide('fade');
+				}
+				return false;
+			}
+		});
+		
+		}else{
+			jQuery('.codnoValido').html('<p>Selecciona una camiseta</p>').show('fade');
+		}
+		return false;
+	});
+	
 });

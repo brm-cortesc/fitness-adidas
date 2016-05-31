@@ -10,8 +10,9 @@ class DataObject_FtLoteXUsuario extends DB_DataObject
 
     public $__table = 'ft_lote_x_usuario';               // table name
     public $id;                              // int(11)  not_null primary_key auto_increment
-    public $idLote;                          // int(11)  
+    public $lote;                            // string(50)  
     public $idUsuario;                       // int(11)  
+    public $refeCamiseta;                    // string(100)  
     public $fecha;                           // datetime(19)  binary
 
     /* Static get */
@@ -21,8 +22,9 @@ class DataObject_FtLoteXUsuario extends DB_DataObject
     {
          return array(
              'id' =>  DB_DATAOBJECT_INT + DB_DATAOBJECT_NOTNULL,
-             'idLote' =>  DB_DATAOBJECT_INT,
+             'lote' =>  DB_DATAOBJECT_STR,
              'idUsuario' =>  DB_DATAOBJECT_INT,
+             'refeCamiseta' =>  DB_DATAOBJECT_STR,
              'fecha' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_DATE + DB_DATAOBJECT_TIME,
          );
     }
@@ -35,6 +37,14 @@ class DataObject_FtLoteXUsuario extends DB_DataObject
     function sequenceKey() // keyname, use native, native name
     {
          return array('id', true, false);
+    }
+
+    function defaults() // column default values 
+    {
+         return array(
+             'lote' => '',
+             'refeCamiseta' => '',
+         );
     }
 
 
