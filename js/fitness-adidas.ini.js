@@ -4,7 +4,7 @@ var btnColor = $('.color'),
 	selectCamiseta = $('#selector-camiseta'),
 	animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
 	input = $('input.form-control'),
-	isSafari = !!navigator.userAgent.match(/safari/i) && !navigator.userAgent.match(/chrome/i) && typeof document.body.style.webkitFilter !== "undefined" && !window.chrome,
+	isSafari = /constructor/i.test(window.HTMLElement),
 	idCamiseta = selectCamiseta.val();
 
 jQuery(document).ready(function($) {
@@ -118,7 +118,7 @@ jQuery(document).ready(function($) {
 
 
 	});
-	
+
 	input.focusout(function() {
 		$(this).parent().removeClass('active');
 
@@ -133,7 +133,7 @@ jQuery(document).ready(function($) {
 
 	
 
-	if (!isSafari) {
+	// if (!isSafari) {
 
 		/*funcion de zoom*/
 
@@ -147,7 +147,13 @@ jQuery(document).ready(function($) {
 
 
 		}, 1000);
-	};
+	// }
+	if(isSafari){
+
+		$('#camiseta').mouseleave(function() {
+			$('.drift-zoom-pane').remove();
+		});
+	}
 
 });
 
