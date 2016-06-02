@@ -118,6 +118,7 @@ jQuery(document).ready(function($) {
 
 
 	});
+	
 	input.focusout(function() {
 		$(this).parent().removeClass('active');
 
