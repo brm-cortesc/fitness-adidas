@@ -4,9 +4,16 @@ var btnColor = $('.color'),
 	selectCamiseta = $('#selector-camiseta'),
 	animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
 	input = $('input.form-control'),
+	isSafari = !!navigator.userAgent.match(/safari/i) && !navigator.userAgent.match(/chrome/i) && typeof document.body.style.webkitFilter !== "undefined" && !window.chrome,
 	idCamiseta = selectCamiseta.val();
 
 jQuery(document).ready(function($) {
+
+	/*validamos tipo de navegador*/
+	if (isSafari) {
+
+		console.log('estoy en safari, b atch');
+	};
 
 	/*Validacion de campos de formulario*/
 	$("#registro").validate({
@@ -176,4 +183,7 @@ $(document).on('click', '.talla', function(event) {
 	$(this).addClass('talla-active');
 
 });
+
+
+
 
