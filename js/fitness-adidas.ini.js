@@ -10,10 +10,7 @@ var btnColor = $('.color'),
 jQuery(document).ready(function($) {
 
 	/*validamos tipo de navegador*/
-	if (isSafari) {
 
-		console.log('estoy en safari, b atch');
-	};
 
 	/*Validacion de campos de formulario*/
 	$("#registro").validate({
@@ -133,18 +130,23 @@ jQuery(document).ready(function($) {
 	});
 
 
-	/*funcion de zoom*/
+	
 
-	setTimeout(function() {
-		new Drift(document.querySelector('#camiseta'), {
-		  paneContainer: document.querySelector('.detalle-camiseta'),
-			 inlinePane: true,
-			  containInline: true,
-			  zoomFactor: 3
-		});
+	if (!isSafari) {
+
+		/*funcion de zoom*/
+
+		setTimeout(function() {
+			new Drift(document.querySelector('#camiseta'), {
+			  paneContainer: document.querySelector('.detalle-camiseta'),
+				 inlinePane: true,
+				  containInline: true,
+				  zoomFactor: 3
+			});
 
 
-	}, 1000);
+		}, 1000);
+	};
 
 });
 
