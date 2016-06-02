@@ -6,6 +6,7 @@ var btnColor = $('.color'),
 	input = $('input.form-control'),
 	isSafari = /constructor/i.test(window.HTMLElement),
 	idCamiseta = selectCamiseta.val();
+	
 
 jQuery(document).ready(function($) {
 
@@ -133,7 +134,6 @@ jQuery(document).ready(function($) {
 
 	
 
-	// if (!isSafari) {
 
 		/*funcion de zoom*/
 
@@ -147,13 +147,14 @@ jQuery(document).ready(function($) {
 
 
 		}, 1000);
-	// }
-	if(isSafari){
+
+		if(isSafari){
 
 		$('#camiseta').mouseleave(function() {
 			$('.drift-zoom-pane').remove();
 		});
 	}
+
 
 });
 
