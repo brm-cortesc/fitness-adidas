@@ -13,7 +13,14 @@ jQuery(document).ready(function($) {
 
 	/*validamos tipo de navegador*/
 
-
+/*se agrega un metodo de validacion llamdo string; se encarga de
+	* validar que las cadenas de caracteres ingresadas no contengan
+	* caracteres especiales.
+	*/
+	jQuery.validator.addMethod("letras", function(value, element)
+    {
+        return this.optional(element) || /^[a-z" "ñÑáéíóúÁÉÍÓÚ,.;]+$/i.test(value);
+    });
 	/*Validacion de campos de formulario*/
 	$("#registro").validate({
 
@@ -29,8 +36,8 @@ jQuery(document).ready(function($) {
 		           multi1:          {required: true},  
 		           multi2:          {required: true},  
 		           multi3:          {required: true},  
-		           nombres:       {required: true, accept: "[a-z" "ñÑáéíóúÁÉÍÓÚ,.;]+$/i" },
-		           apellidos:       {required: true, accept: "[a-z" "ñÑáéíóúÁÉÍÓÚ,.;]+$/i" },
+		           nombres:       {required: true, letras:true },
+		           apellidos:       {required: true, letras:true },
 		           email:       {required: true, email: true},  
 		           telefono:          {required: true, digits: true},  
 		           genero:        {required: true},
@@ -49,8 +56,8 @@ jQuery(document).ready(function($) {
 		      multi1:      {required: "debes ingresar el número de lote"},
 		      multi2:      {required: "debes ingresar el número de lote"},
 		      multi3:      {required: "debes ingresar el número de lote"},
-		      nombres:      {required: "debes ingresar tu nombre", accept: "solo ingresa texto"},
-		      apellidos:      {required: "debes ingresar tus apellidos", accept: "solo ingresa texto"},
+		      nombres:      {required: "debes ingresar tu nombre", letras: "solo ingresa texto"},
+		      apellidos:      {required: "debes ingresar tus apellidos", letras: "solo ingresa texto"},
 		      email:      {required: "debes ingresar un email", email: "Ingresa un email válido"},
 		      telefono:  {required: "Indíca un número de teléfono", digits: "solo se aceptan números" },
 		      genero:         {required: "Indica un género"},
